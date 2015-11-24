@@ -1,6 +1,11 @@
 #!/usr/env python3
 
+"""Docstring goes here!"""
+
 import random
+
+__author__ = "6082200: Oles Pidgornyy, 6040608: Phillip Berger"
+
 
 class Backend:
 
