@@ -69,6 +69,8 @@ class Backend:
 				values = self.get_col(row)
 			elif (side == 3):
 				values = reversed(self.get_col(row))
+			else:
+				raise ValueError("unknown side")
 			hints.append(self.hints_count(values))
 		return hints
 
