@@ -12,6 +12,9 @@ class Backend:
 	field = None
 	field_dimens = 4
 
+	def start_game(self):
+		self.generate_field()
+
 	def compare_fields(self, field):
 		all_correct = True
 		for row in range(self.field_dimens):
