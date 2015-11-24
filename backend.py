@@ -20,6 +20,42 @@ class Backend:
 					all_correct = False
 		return all_correct
 
+	def hints_count(self, items):
+		hints, hightest_item = 0, 0
+		for item in items:
+			if (item > hightest_item):
+				hightest_item = item
+				hints += 1
+		return hints
+
+	def get_row(self, row):
+		return self.field[row]
+
+	def get_col(self, col):
+		coll = []
+		for row in self.field:
+			coll.append(row[col])
+		return coll
+
+	def generate_hints(self, side):
+		if (side in ["r", "l", "t", "b"]):
+			hints = []
+			for row in range(self.field_dimens):
+				if (side == "r"):
+					values = self.get_row(row)
+				elif (side == "l"):
+					values = reversed(self.get_row(row))
+				elif (side == "t"):
+					values = self.get_col(row)
+				elif (side == "b"):
+					values = reversed(self.get_col(row))
+				hints.append(self.hints_count(values))
+			return hints
+		elif (side in ["t", "b"]):
+			pass
+		else:
+			raise ValueError("unexpected side")
+
 	def get_field(self):
 		return self.field
 
