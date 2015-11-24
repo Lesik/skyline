@@ -1,5 +1,5 @@
 #!/usr/env python3
-
+__author__ = "6040608: Phillip Berger"
 import backend
 
 asd = backend.Backend()
