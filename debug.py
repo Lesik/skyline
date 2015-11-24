@@ -16,14 +16,18 @@ print(true)
 print()
 
 # uncomment to test hint generation
+print("right hints:", game_backend.generate_hints(0))
 print("left hints:", game_backend.generate_hints(1))
-print("right hints:", game_backend.generate_hints("l"))
-print("top hints:", game_backend.generate_hints("t"))
-print("bottom hints:", game_backend.generate_hints("b"))
+print("top hints:", game_backend.generate_hints(2))
+print("bottom hints:", game_backend.generate_hints(3))
+print()
 
 # uncomment to test hint generation by GUI
 x = "egal"
+print("right hints:", game_backend.get_hints(x, 5))
 print("left hints:", game_backend.get_hints(x, 0))
+print("top hints:", game_backend.get_hints(0, x))
+print("bottom hints:", game_backend.get_hints(5, x))
 
 print()
 

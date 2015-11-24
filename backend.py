@@ -12,6 +12,12 @@ class Backend:
 	field = None
 	field_dimens = 4
 
+	def get_field_dimens(self):
+		return self.field_dimens
+
+	def set_field_dimens(self, field_dimens):
+		self.field_dimens = field_dimens
+
 	def start_game(self):
 		self.generate_field()
 
