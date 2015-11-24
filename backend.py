@@ -37,24 +37,37 @@ class Backend:
 			coll.append(row[col])
 		return coll
 
+	def get_hints(self, row, col):
+		if (row == 0):
+			return self.generate_hints(2)
+		elif (col == 0):
+			return self.generate_hints(1)
+		elif (row == 5):
+			return self.generate_hints(3)
+		elif (col == 5):
+			return self.generate_hints(0)
+
 	def generate_hints(self, side):
-		if (side in ["r", "l", "t", "b"]):
-			hints = []
-			for row in range(self.field_dimens):
-				if (side == "r"):
-					values = self.get_row(row)
-				elif (side == "l"):
-					values = reversed(self.get_row(row))
-				elif (side == "t"):
-					values = self.get_col(row)
-				elif (side == "b"):
-					values = reversed(self.get_col(row))
-				hints.append(self.hints_count(values))
-			return hints
-		elif (side in ["t", "b"]):
-			pass
-		else:
-			raise ValueError("unexpected side")
+		"""
+		:param side:
+		 0 is right
+		 1 is left
+		 2 is top
+		 3 ist bottom
+		:return:
+		"""
+		hints = []
+		for row in range(self.field_dimens):
+			if (side == 0):
+				values = self.get_row(row)
+			elif (side == 1):
+				values = reversed(self.get_row(row))
+			elif (side == 2):
+				values = self.get_col(row)
+			elif (side == 3):
+				values = reversed(self.get_col(row))
+			hints.append(self.hints_count(values))
+		return hints
 
 	def get_field(self):
 		return self.field
