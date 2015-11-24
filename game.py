@@ -4,15 +4,16 @@ __author__ = ""
 
 import backend
 import tkinter as tk
+from tkinter import messagebox
 
-game_window = tk.Tk()
-game_backend = backend.Backend()
+game_window = None
+game_backend = None
 
 labels = []
 inputs = []
 n = 4
 
-def get_hint_index(r, c):
+def __get_hint_index(r, c):
     if (r == 0 or r == n + 1):
         return c - 1
     else:
@@ -26,7 +27,7 @@ def generate_grid():
             if (top_bottom_tips or left_right_tips):
                 hints = game_backend.get_hints(r, c)
                 l = tk.Label(game_window, text = \
-                             hints[get_hint_index(r, c)])
+                             hints[__get_hint_index(r, c)])
                 labels.append(l)
                 l.grid(row=r, column=c)
             elif (0 < r < n + 1 and 0 < c < n + 1):
@@ -34,6 +35,41 @@ def generate_grid():
                 inputs.append(e)
                 e.grid(row=r, column=c,)
 
-game_backend.start_game()
-generate_grid()
+
+def echo_hey():
+    print("hey")
+
+
+def start_game():
+    global game_backend
+    game_backend = backend.Backend()
+    game_backend.start_game()
+    generate_grid()
+
+
+def help():
+    messagebox.showinfo("Help", "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.")
+
+
+def quit():
+    game_window.quit()
+
+# init game window
+game_window = tk.Tk()
+
+
+# menubar
+menubar = tk.Menu(game_window)
+filemenu = tk.Menu(menubar, tearoff=0)
+filemenu.add_command(label="New game", command=start_game)
+filemenu.add_command(label="Check", command=echo_hey)
+filemenu.add_command(label="Help", command=help)
+filemenu.add_separator()
+filemenu.add_command(label="Quit", command=quit)
+menubar.add_cascade(label="File", menu=filemenu)
+
+
+# global window blabla
+game_window.config(menu=menubar)
+game_window.minsize(width=400, height=400)
 game_window.mainloop()
