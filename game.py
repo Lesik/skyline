@@ -21,7 +21,7 @@ def get_hint_index(r, c):
 def generate_grid():
     for r in range(n + 2):
         for c in range(n + 2):
-            top_bottom_tips = (r == 0 or r == n + 1 ) and (0 < c < n + 1)
+            top_bottom_tips = (r == 0 or r == n + 1) and (0 < c < n + 1)
             left_right_tips = (c == 0 or c == n + 1) and (0 < r < n + 1)
             if (top_bottom_tips or left_right_tips):
                 hints = game_backend.get_hints(r, c)
@@ -30,7 +30,7 @@ def generate_grid():
                 labels.append(l)
                 l.grid(row=r, column=c)
             elif (0 < r < n + 1 and 0 < c < n + 1):
-                e = tk.Entry(game_window, width = 2)
+                e = tk.Entry(game_window, width=2)
                 inputs.append(e)
                 e.grid(row=r, column=c,)
 
