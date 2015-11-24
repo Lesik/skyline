@@ -38,6 +38,9 @@ class Backend:
 		return coll
 
 	def get_hints(self, row, col):
+		"""Helper function for GUI to get hints by coordinates
+		:return: list of hints for coordinates
+		"""
 		if (row == 0):
 			return self.generate_hints(2)
 		elif (col == 0):
@@ -48,13 +51,13 @@ class Backend:
 			return self.generate_hints(0)
 
 	def generate_hints(self, side):
-		"""
-		:param side:
+		"""Generates hints
+		:param side: the side on which to generate hint, as int
 		 0 is right
 		 1 is left
 		 2 is top
 		 3 ist bottom
-		:return:
+		:return: list of hints for side
 		"""
 		hints = []
 		for row in range(self.field_dimens):
@@ -75,7 +78,7 @@ class Backend:
 	def riilain(self, list, index, item):
 		"""Replace item in list, append if needed (RIILAIN).
 		:param list: the list in question
-		:param index: index of where item shoul  ideally go
+		:param index: index of where item should ideally go
 		:param item: item that should be inserted
 		:return: nothing
 		"""
