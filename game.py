@@ -22,6 +22,13 @@ def __get_hint_index(r, c):
 		return r - 1
 
 
+def __check_entry_input(char, entry_value):
+	if (char in '1234'):
+		return True
+	else:
+		return False
+
+
 def generate_grid():
 	for r in range(n + 2):
 		for c in range(n + 2):
@@ -34,7 +41,10 @@ def generate_grid():
 				labels.append(l)
 				l.grid(row=r, column=c)
 			elif (0 < r < n + 1 and 0 < c < n + 1):
-				e = tk.Entry(game_window, width=2)
+				e = tk.Entry(game_window,
+							 width=2,
+							 validate='key',
+							 validatecommand=__check_entry_input)
 				inputs.append(e)
 				e.grid(row=r, column=c,)
 
