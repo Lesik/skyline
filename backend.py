@@ -4,6 +4,7 @@
 
 import random
 import re
+import collections
 
 __author__ = "6082200: Oles Pidgornyy, 6040608: Phillip Berger"
 
@@ -134,8 +135,12 @@ class Backend:
 
 				cont = True
 				for col in range(self.field_dimens):
-					for previous_row in range(row - 1):
+					for previous_row in range(row):
 						if (field[(previous_row, col)] == field[(row, col)]):
 							cont = False
 		self.field = field
 		print(self.field)
+		for k, v in self.field.items():
+			print(k, ":", v)
+		for row2 in self.field_dimens:
+			print(self.get_row(row2))
