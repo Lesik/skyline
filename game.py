@@ -6,19 +6,15 @@ import backend
 import tkinter as tk
 from tkinter import messagebox
 
+# global variables are defined
 game_window = None
 game_backend = None
 
+# global lists are defined
 labels = []
 inputs = []
-n = 4
-
-
-def __get_hint_index(r, c):
-	if (r == 0 or r == n + 1):
-		return c - 1
-	else:
-		return r - 1
+# the number of different houses are defined
+house_heights = 4
 
 
 def __check_entry_input(char, entry_value):
@@ -29,16 +25,19 @@ def __check_entry_input(char, entry_value):
 
 
 def generate_grid():
-	for r in range(n + 2):
-		for c in range(n + 2):
-			top_bottom_tips = (r == 0 or r == n + 1) and (0 < c < n + 1)
-			left_right_tips = (c == 0 or c == n + 1) and (0 < r < n + 1)
-			if (top_bottom_tips or left_right_tips):
+	'''Generates the graphical background on the basis of grid'''
+	for r in range(house_heights + 2):
+		for c in range(house_heights + 2):
+			top_bottom_tips = (r == 0 or r == house_heights + 1) \
+							  and (0 < c < house_heights + 1)
+			left_right_tips = (c == 0 or c == house_heights + 1) \
+							  and (0 < r < house_heights + 1)
+			if top_bottom_tips or left_right_tips:
 				hints = game_backend.get_hints(r, c)
 				l = tk.Label(game_window, text = game_backend.get_hints(r, c))
 				labels.append(l)
 				l.grid(row=r, column=c)
-			elif (0 < r < n + 1 and 0 < c < n + 1):
+			elif 0 < r < house_heights + 1 and 0 < c < house_heights + 1:
 				e = tk.Entry(game_window,
 							width=2,
 							validate='key',
@@ -47,9 +46,10 @@ def generate_grid():
 				e.grid(row=r, column=c,)
 
 
-def get_userentries():
-	userentries = []
-	userentries_split = []
+def get_user_entries():
+	'''takes the input of the user and saves it as four lists'''
+	user_entries = []
+	user_entries_split = []
 	for e in inputs:
 		try:
 			i = int(e.get())
@@ -57,31 +57,34 @@ def get_userentries():
 			i = None
 		if (i is None):
 			return None
-		userentries.append(i)
-	b = int(len(userentries) ** 0.5)
+		user_entries.append(i)
+	b = int(len(user_entries) ** 0.5)
 	for i in range(b):
-		userentries_split.append(userentries[i * b:(i * b) + b])
-	return userentries_split
+		user_entries_split.append(user_entries[i * b:(i * b) + b])
+	return user_entries_split
 
 
 
 def action_check():
+	'''compares the gnerated solution with the solution of the user'''
 	if game_backend is None:
 		messagebox.showerror("Error", "You need to the game first to play.")
 	else:
-		user_entries = get_userentries()
+		user_entries = get_user_entries()
 		if user_entries is None:
 			messagebox.showerror("Error", "You did not fill in all fields.")
-		elif (game_backend.compare_fields(get_userentries())):
+		elif (game_backend.compare_fields(get_user_entries())):
 			messagebox.showinfo("Winner", "You win. YaY!")
 		else:
-			messagebox.showinfo("Loser", "You are a Loser.")
+			messagebox.showinfo("You lose", "Sorry, but you lose you can "
+											"try again.")
 
 
 
 def action_new_game():
+	'''starts a new game'''
 	global game_backend
-	if (all(x == None for x in get_userentries()) or
+	if (all(x == None for x in get_user_entries()) or
 			messagebox.askyesno("Start new game?",
 			"Are you sure you want to start a new game?")):
 		game_backend = backend.Backend()
@@ -90,6 +93,7 @@ def action_new_game():
 
 
 def action_help():
+	'''opens a messagebox if the help-button is pressed'''
 	messagebox.showinfo("Help", "Hello, \n"
 								"welcome in the beautiful world of skyline.\n"
 								"On all four sides of the field are hints "
@@ -101,12 +105,14 @@ def action_help():
 								"you think you are done you press check.\n"
 								"Have fun.")
 def action_about():
+	'''opens a messagebox if the about-button is pressed'''
 	messagebox.showinfo("About", "Hier würden eigentlich unsere "
 								 "Hausnummern stehen, aber wir sind nur "
 								 "Studenten...")
 
 
 def action_quit():
+	'''stops the program if the quit-button is pressed'''
 	game_window.quit()
 
 # init game window
@@ -132,7 +138,7 @@ menubar.add_cascade(label="File", menu=menu_file)
 menubar.add_cascade(label="Help", menu=menu_help)
 
 
-# global window blabla
+# global window starts and it's width and height is set
 game_window.config(menu=menubar)
 game_window.minsize(width=200, height=200)
 game_window.mainloop()
