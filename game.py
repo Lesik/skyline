@@ -41,6 +41,11 @@ def generate_grid():
 def echo_hey():
     print("hey")
 
+def get_userentries():
+    for e in inputs:
+        i = inputs[e].get()
+        userentries.append(i)
+        print(userentries)
 
 def start_game():
     global game_backend
