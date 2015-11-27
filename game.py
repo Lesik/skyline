@@ -54,15 +54,16 @@ def echo_hey():
 
 
 def get_userentries():
-    for e in inputs:
-        i = e.get()
-        userentries.append(i)
-    for i in len(userentries) ** 0.5:
-        a.append([])
-        print(a)
-    for i in a:
-        i.append(userentries[i * b:((i*b)+b)-1]
-    print(userentries)
+	for e in inputs:
+		i = e.get()
+		userentries.append(i)
+	for i in len(userentries) ** 0.5:
+	#    a.append([])
+	#    print(a)
+	#for i in a:
+		i.append(userentries[i * b:((i*b)+b)-1])
+	#print(userentries)
+	pass
 
 
 def action_check():
