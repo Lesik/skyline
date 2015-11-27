@@ -86,8 +86,16 @@ def action_new_game():
 
 
 def action_help():
-	messagebox.showinfo("Help", "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.")
-
+	messagebox.showinfo("Help", "Hello, \n"
+								"welcome in the beautiful world of skyline.\n"
+								"On all four sides of the field are hints "
+								"for you. They tell you how many houses "
+								"you can see from their position. The heights "
+								"of the houses are represented by the "
+								"digits you can fill in. They go from 1 to 4. "
+								"Higher houses cover lower ones. After "
+								"you think you are done you press check.\n"
+								"Have fun.")
 def action_about():
 	messagebox._show("About", "Yay")
 
