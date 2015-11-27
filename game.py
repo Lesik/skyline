@@ -48,19 +48,32 @@ def get_userentries():
 		i = e.get()
 		userentries.append(i)
 	print(userentries)
+	return userentries
 
-def start_game():
+
+def action_check():
+	pass
+
+
+def action_new_game():
 	global game_backend
-	game_backend = backend.Backend()
-	game_backend.start_game()
-	generate_grid()
+	if (all(x == "" for x in get_userentries())):
+		start_game = True
+	else:
+		start_game = messagebox.askyesno("Start new game?",
+			"Are you sure you want to start a new game?")
+
+	if (start_game):
+		game_backend = backend.Backend()
+		game_backend.start_game()
+		generate_grid()
 
 
-def help():
+def action_help():
 	messagebox.showinfo("Help", "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.")
 
 
-def quit():
+def action_quit():
 	game_window.quit()
 
 # init game window
@@ -70,11 +83,11 @@ game_window = tk.Tk()
 # menubar
 menubar = tk.Menu(game_window)
 filemenu = tk.Menu(menubar, tearoff=0)
-filemenu.add_command(label="New game", command=start_game)
-filemenu.add_command(label="Check", command=get_userentries)
-filemenu.add_command(label="Help", command=help)
+filemenu.add_command(label="New game", command=action_new_game)
+filemenu.add_command(label="Check", command=action_check)
+filemenu.add_command(label="Help", command=action_help)
 filemenu.add_separator()
-filemenu.add_command(label="Quit", command=quit)
+filemenu.add_command(label="Quit", command=action_quit)
 menubar.add_cascade(label="File", menu=filemenu)
 
 
