@@ -1,6 +1,6 @@
-#!/usr/env python3
+#!/usr/bin/python3
 
-__author__ = ""
+__author__ = "6040608: Phillip Berger, 6082200: Oles Pidgornyy"
 
 import backend
 import tkinter as tk
@@ -13,11 +13,13 @@ labels = []
 inputs = []
 n = 4
 
+
 def __get_hint_index(r, c):
     if (r == 0 or r == n + 1):
         return c - 1
     else:
         return r - 1
+
 
 def generate_grid():
     for r in range(n + 2):

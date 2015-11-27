@@ -1,6 +1,11 @@
 #!/usr/env python3
-__author__ = "6040608: Phillip Berger"
+
+"""This is a debugging class. Do not count this file
+into the final mark. I may not follow all conventions here."""
+
 import backend
+
+__author__ = "6040608: Phillip Berger, 6040608: Phillip Berger"
 
 game_backend = backend.Backend()
 game_backend.generate_field()
