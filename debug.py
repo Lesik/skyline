@@ -1,7 +1,7 @@
 #!/usr/env python3
 
 """This is a debugging class. Do not count this file
-into the final mark. I may not follow all conventions here."""
+into the final mark. Some conventions may not have been followed."""
 
 import backend
 
