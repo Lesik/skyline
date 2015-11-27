@@ -45,9 +45,9 @@ def echo_hey():
 
 def get_userentries():
 	for e in inputs:
-		i = inputs[e].get()
+		i = e.get()
 		userentries.append(i)
-		print(userentries)
+	print(userentries)
 
 def start_game():
 	global game_backend
@@ -71,7 +71,7 @@ game_window = tk.Tk()
 menubar = tk.Menu(game_window)
 filemenu = tk.Menu(menubar, tearoff=0)
 filemenu.add_command(label="New game", command=start_game)
-filemenu.add_command(label="Check", command=echo_hey)
+filemenu.add_command(label="Check", command=get_userentries)
 filemenu.add_command(label="Help", command=help)
 filemenu.add_separator()
 filemenu.add_command(label="Quit", command=quit)
