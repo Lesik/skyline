@@ -50,26 +50,25 @@ def generate_grid():
 
 
 def get_userentries():
-    for e in inputs:
-        try:
-            i = int(e.get())
-        except:
-            i = None
-        userentries.append(i)
-    b = int(len(userentries) ** 0.5)
-    for i in range(b):
-        userentries_split.append(userentries[i * b:(i*b)+b])
-    #print(userentries)
-    return userentries_split
+	for e in inputs:
+		try:
+			i = int(e.get())
+		except:
+			i = None
+		userentries.append(i)
+	b = int(len(userentries) ** 0.5)
+	for i in range(b):
+		userentries_split.append(userentries[i * b:(i * b) + b])
+	return userentries_split
 
 
 
 def action_check():
-    print(get_userentries())
-    if (game_backend.compare_fields(get_userentries())):
-       messagebox.showinfo("Winner", "You win. YaY!")
-    else:
-        messagebox.showinfo("Loser", "You are a Loser.")
+	print(get_userentries())
+	if (game_backend.compare_fields(get_userentries())):
+		messagebox.showinfo("Winner", "You win. YaY!")
+	else:
+		messagebox.showinfo("Loser", "You are a Loser.")
 
 
 def action_new_game():

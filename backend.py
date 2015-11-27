@@ -47,18 +47,21 @@ class Backend:
 		return dictionary_return
 
 	def get_row(self, row):
-		rowl = []
+		rowl = {}
+		print("row in getrow", row)
 		for key in self.field.keys():
 			if key[0] == row:
-				rowl.append(self.field[key])
-		return rowl
+				rowl[key[1]] = self.field[key]
+		x = [y for y in rowl]
+		return x
 
 	def get_col(self, col):
-		rowl = []
+		rowl = {}
 		for key in self.field.keys():
 			if key[1] == col:
-				rowl.append(self.field[key])
-		return rowl
+				rowl[key[0]] = self.field[key]
+		x = [y for y in rowl]
+		return x
 
 	def get_hints(self, row, col):
 		"""Helper function for GUI to get hints by coordinates
@@ -142,5 +145,5 @@ class Backend:
 		print(self.field)
 		for k, v in self.field.items():
 			print(k, ":", v)
-		for row2 in self.field_dimens:
+		for row2 in range(self.field_dimens):
 			print(self.get_row(row2))
