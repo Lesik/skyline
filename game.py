@@ -103,8 +103,10 @@ cmd_validate = (game_window.register(__check_entry_input), '%S', '%P')
 menubar = tk.Menu(game_window)
 "test"
 menu_file = tk.Menu(menubar, tearoff=0)
-menu_file.add_command(label="New game", command=action_new_game)
-menu_file.add_command(label="Check", command=action_check)
+menu_file.add_command(label="New game", command=action_new_game,\
+					  underline=1, accelerator="Ctrl+N")
+menu_file.add_command(label="Check", command=action_check,\
+					  underline=1, accelerator="Ctrl+H")
 menu_file.add_separator()
 menu_file.add_command(label="Quit", command=action_quit)
 
