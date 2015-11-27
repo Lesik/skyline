@@ -12,6 +12,7 @@ game_backend = None
 labels = []
 inputs = []
 userentries = []
+userentries_split = []
 n = 4
 
 
@@ -52,20 +53,17 @@ def generate_grid():
 def echo_hey():
     print("hey")
 
-a = []
 
 def get_userentries():
     for e in inputs:
         i = e.get()
         userentries.append(i)
     b = int(len(userentries) ** 0.5)
-    #for i in range(b):
-       # a.append([])
-    print(a)
+    print(userentries_split)
     for i in range(b):
-        a.append(userentries[i * b:((i*b)+b)-1])
+        userentries_split.append(userentries[i * b:((i*b)+b)])
     print(userentries)
-    print(a)
+    print(userentries_split)
 
 
 
