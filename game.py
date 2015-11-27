@@ -64,6 +64,7 @@ def get_userentries():
         userentries_split.append(userentries[i * b:((i*b)+b)])
     print(userentries)
     print(userentries_split)
+    return userentries_split
 
 
 

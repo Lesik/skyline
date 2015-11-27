@@ -16,7 +16,7 @@ print(game_backend.get_field())
 true = game_backend.compare_fields(eval(input()))
 #true = game_backend.compare_fields([[2, 3, 1, 4], [4, 1, 2, 3], [1, 4, 3, 2], [3, 2, 4, 1]])
 print(true)
-"""
+
 
 print()
 
@@ -38,4 +38,4 @@ print()
 
 # uncomment to test getting rows and cols
 print("third row:", game_backend.get_row(2))
-print("second col:", game_backend.get_col(1))
+print("second col:", game_backend.get_col(1))"""
