@@ -114,5 +114,5 @@ menubar.add_cascade(label="Help", menu=menu_help)
 
 # global window blabla
 game_window.config(menu=menubar)
-game_window.minsize(width=400, height=400)
+game_window.minsize(width=200, height=200)
 game_window.mainloop()
