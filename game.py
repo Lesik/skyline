@@ -37,8 +37,7 @@ def generate_grid():
 			left_right_tips = (c == 0 or c == n + 1) and (0 < r < n + 1)
 			if (top_bottom_tips or left_right_tips):
 				hints = game_backend.get_hints(r, c)
-				l = tk.Label(game_window, text = \
-							 hints[__get_hint_index(r, c)])
+				l = tk.Label(game_window, text = game_backend.get_hints(r, c))
 				labels.append(l)
 				l.grid(row=r, column=c)
 			elif (0 < r < n + 1 and 0 < c < n + 1):

@@ -138,3 +138,4 @@ class Backend:
 						if (field[(previous_row, col)] == field[(row, col)]):
 							cont = False
 		self.field = field
+		print(self.field)
