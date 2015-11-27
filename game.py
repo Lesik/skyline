@@ -50,20 +50,23 @@ def generate_grid():
 
 
 def echo_hey():
-	print("hey")
+    print("hey")
 
+a = []
 
 def get_userentries():
-	for e in inputs:
-		i = e.get()
-		userentries.append(i)
-	for i in len(userentries) ** 0.5:
-	#    a.append([])
-	#    print(a)
-	#for i in a:
-		i.append(userentries[i * b:((i*b)+b)-1])
-	#print(userentries)
-	pass
+    for e in inputs:
+        i = e.get()
+        userentries.append(i)
+    b = int(len(userentries) ** 0.5)
+    #for i in range(b):
+       # a.append([])
+    print(a)
+    for i in range(b):
+        a.append(userentries[i * b:((i*b)+b)-1])
+    print(userentries)
+    print(a)
+
 
 
 def action_check():
