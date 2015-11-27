@@ -3,8 +3,6 @@
 """Docstring goes here!"""
 
 import random
-import re
-import collections
 
 __author__ = "6082200: Oles Pidgornyy, 6040608: Phillip Berger"
 
@@ -32,74 +30,34 @@ class Backend:
 		return all_correct
 
 	def count_hints(self, items):
-		hint, hightest_item = 0, 0
+		hints, hightest_item = 0, 0
 		for item in items:
 			if (item > hightest_item):
 				hightest_item = item
-				hint += 1
-		return hint
-
-	def get_regex(self, dictionary, regex):
-		dictionary_return = []
-		for key in dictionary.keys():
-			if re.match(key, regex):
-				dictionary_return.append(dictionary[key])
-		return dictionary_return
+				hints += 1
+		return hints
 
 	def get_row(self, row):
-		rowl = {}
-		print("row in getrow", row)
-		for key in self.field.keys():
-			if key[0] == row:
-				rowl[key[1]] = self.field[key]
-		x = [y for y in rowl]
-		return x
+		return self.field[row]
 
 	def get_col(self, col):
-		rowl = {}
-		for key in self.field.keys():
-			if key[1] == col:
-				rowl[key[0]] = self.field[key]
-		x = [y for y in rowl]
-		return x
+		coll = []
+		for row in self.field:
+			coll.append(row[col])
+		return coll
 
 	def get_hints(self, row, col):
 		"""Helper function for GUI to get hints by coordinates
 		:return: list of hints for coordinates
 		"""
 		if (row == 0):
-			return self.count_hints(self.get_col(col))
-		elif (col == 0):
-			return self.count_hints(self.get_row(row))
+			return self.count_hints(self.get_col(col - 1))
 		elif (row == 5):
-			return self.count_hints(reversed(self.get_col(col)))
+			return self.count_hints(reversed(self.get_col(col - 1)))
+		elif (col == 0):
+			return self.count_hints(self.get_row(row - 1))
 		elif (col == 5):
-			return self.count_hints(reversed(self.get_row(row)))
-
-	def generate_hints(self, side):
-		"""Generates hints
-		:param side: the side on which to generate hint, as int
-		 0 is right
-		 1 is left
-		 2 is top
-		 3 ist bottom
-		:return: list of hints for side
-		"""
-		hints = []
-		for row in range(self.field_dimens):
-			if (side == 0):
-				values = self.get_row(row)
-			elif (side == 1):
-				values = reversed(self.get_row(row))
-			elif (side == 2):
-				values = self.get_col(row)
-			elif (side == 3):
-				values = reversed(self.get_col(row))
-			else:
-				raise ValueError("unknown side")
-			hints.append(self.hints_count(values))
-		print(side, hints)
-		return hints
+			return self.count_hints(reversed(self.get_row(row - 1)))
 
 	def get_field(self):
 		return self.field
@@ -120,30 +78,25 @@ class Backend:
 		"""Generate a game field, no duplicates allowed.
 		:return: game field as list
 		"""
-		field = {}
+		field = []
 
 		for row in range(self.field_dimens):
-			#field.insert(row, [])
+			field.insert(row, [])
 			heights = list(range(1, self.field_dimens + 1))
 
 			cont = False
 			while not cont:
 				random.shuffle(heights)
 				for col in range(self.field_dimens):
-					#self.riilain(field[row], col, heights[col])
-					field[(row, col)] = heights[col]
+					self.riilain(field[row], col, heights[col])
 				# uncomment this to see how many tries it takes until a
 				# fitting combination was found, quite amusing
-				#print(field[(row, col)])
+				#print(field[row])
 
 				cont = True
 				for col in range(self.field_dimens):
-					for previous_row in range(row):
-						if (field[(previous_row, col)] == field[(row, col)]):
+					for previous_row in range(len(field) - 1):
+						if (field[previous_row][col] == field[row][col]):
 							cont = False
+			#print(field[row])
 		self.field = field
-		print(self.field)
-		for k, v in self.field.items():
-			print(k, ":", v)
-		for row2 in range(self.field_dimens):
-			print(self.get_row(row2))
