@@ -24,7 +24,7 @@ def __get_hint_index(r, c):
 
 def generate_grid():
     for r in range(n + 2):
-    	for c in range(n + 2):
+        for c in range(n + 2):
             top_bottom_tips = (r == 0 or r == n + 1) and (0 < c < n + 1)
             left_right_tips = (c == 0 or c == n + 1) and (0 < r < n + 1)
             if (top_bottom_tips or left_right_tips):
@@ -41,17 +41,21 @@ def generate_grid():
 def echo_hey():
     print("hey")
 
+a = []
 
 def get_userentries():
     for e in inputs:
         i = e.get()
         userentries.append(i)
-    for i in len(userentries) ** 0.5:
-        a.append([])
-        print(a)
-    for i in a:
-        i.append(userentries[i * b:((i*b)+b)-1]
+    b = int(len(userentries) ** 0.5)
+    #for i in range(b):
+       # a.append([])
+    print(a)
+    for i in range(b):
+        a.append(userentries[i * b:((i*b)+b)-1])
     print(userentries)
+    print(a)
+
 
 def start_game():
     global game_backend
