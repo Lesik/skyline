@@ -50,14 +50,14 @@ class Backend:
 		"""Helper function for GUI to get hints by coordinates
 		:return: list of hints for coordinates
 		"""
-		if (row == 0):
-			return self.generate_hints(2)
+		if (col == 5):
+			return self.generate_hints(0)
 		elif (col == 0):
 			return self.generate_hints(1)
+		elif (row == 0):
+			return self.generate_hints(2)
 		elif (row == 5):
 			return self.generate_hints(3)
-		elif (col == 5):
-			return self.generate_hints(0)
 
 	def generate_hints(self, side):
 		"""Generates hints
