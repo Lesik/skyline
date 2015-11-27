@@ -66,13 +66,17 @@ def get_userentries():
 
 
 def action_check():
-	user_entries = get_userentries()
-	if user_entries is None:
-		messagebox.showinfo("Error", "You did not fill in all fields.")
-	elif (game_backend.compare_fields(get_userentries())):
-		messagebox.showinfo("Winner", "You win. YaY!")
+	if game_backend is None:
+		messagebox.showerror("Error", "You need to the game first to play.")
 	else:
-		messagebox.showinfo("Loser", "You are a Loser.")
+		user_entries = get_userentries()
+		if user_entries is None:
+			messagebox.showerror("Error", "You did not fill in all fields.")
+		elif (game_backend.compare_fields(get_userentries())):
+			messagebox.showinfo("Winner", "You win. YaY!")
+		else:
+			messagebox.showinfo("Loser", "You are a Loser.")
+
 
 
 def action_new_game():
@@ -97,7 +101,9 @@ def action_help():
 								"you think you are done you press check.\n"
 								"Have fun.")
 def action_about():
-	messagebox._show("About", "Yay")
+	messagebox.showinfo("About", "Hier würden eigentlich unsere "
+								 "Hausnummern stehen, aber wir sind nur "
+								 "Studenten...")
 
 
 def action_quit():
