@@ -11,8 +11,6 @@ game_backend = None
 
 labels = []
 inputs = []
-userentries = []
-userentries_split = []
 n = 4
 
 
@@ -50,11 +48,15 @@ def generate_grid():
 
 
 def get_userentries():
+	userentries = []
+	userentries_split = []
 	for e in inputs:
 		try:
 			i = int(e.get())
 		except:
 			i = None
+		if (i is None):
+			return None
 		userentries.append(i)
 	b = int(len(userentries) ** 0.5)
 	for i in range(b):
@@ -64,8 +66,10 @@ def get_userentries():
 
 
 def action_check():
-	print(get_userentries())
-	if (game_backend.compare_fields(get_userentries())):
+	user_entries = get_userentries()
+	if user_entries is None:
+		messagebox.showinfo("Error", "You did not fill in all fields.")
+	elif (game_backend.compare_fields(get_userentries())):
 		messagebox.showinfo("Winner", "You win. YaY!")
 	else:
 		messagebox.showinfo("Loser", "You are a Loser.")

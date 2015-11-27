@@ -100,3 +100,4 @@ class Backend:
 							cont = False
 			#print(field[row])
 		self.field = field
+		print(self.field)
