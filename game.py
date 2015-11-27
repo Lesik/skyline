@@ -23,7 +23,7 @@ def __get_hint_index(r, c):
 
 
 def __check_entry_input(char, entry_value):
-	if (char in '1234'):
+	if ((char in '1234') and len(entry_value) <= 1):
 		return True
 	else:
 		return False
@@ -42,9 +42,9 @@ def generate_grid():
 				l.grid(row=r, column=c)
 			elif (0 < r < n + 1 and 0 < c < n + 1):
 				e = tk.Entry(game_window,
-							 width=2,
-							 validate='key',
-							 validatecommand=__check_entry_input)
+							width=2,
+							validate='key',
+							validatecommand=cmd_validate)
 				inputs.append(e)
 				e.grid(row=r, column=c,)
 
@@ -67,13 +67,9 @@ def action_check():
 
 def action_new_game():
 	global game_backend
-	if (all(x == "" for x in get_userentries())):
-		start_game = True
-	else:
-		start_game = messagebox.askyesno("Start new game?",
-			"Are you sure you want to start a new game?")
-
-	if (start_game):
+	if (all(x == "" for x in get_userentries()) or
+			messagebox.askyesno("Start new game?",
+			"Are you sure you want to start a new game?")):
 		game_backend = backend.Backend()
 		game_backend.start_game()
 		generate_grid()
@@ -82,23 +78,32 @@ def action_new_game():
 def action_help():
 	messagebox.showinfo("Help", "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.")
 
+def action_about():
+	messagebox._show("About", "Yay")
+
 
 def action_quit():
 	game_window.quit()
 
 # init game window
 game_window = tk.Tk()
-
+cmd_validate = (game_window.register(__check_entry_input), '%S', '%P')
 
 # menubar
 menubar = tk.Menu(game_window)
-filemenu = tk.Menu(menubar, tearoff=0)
-filemenu.add_command(label="New game", command=action_new_game)
-filemenu.add_command(label="Check", command=action_check)
-filemenu.add_command(label="Help", command=action_help)
-filemenu.add_separator()
-filemenu.add_command(label="Quit", command=action_quit)
-menubar.add_cascade(label="File", menu=filemenu)
+
+menu_file = tk.Menu(menubar, tearoff=0)
+menu_file.add_command(label="New game", command=action_new_game)
+menu_file.add_command(label="Check", command=action_check)
+menu_file.add_separator()
+menu_file.add_command(label="Quit", command=action_quit)
+
+menu_help = tk.Menu(menubar, tearoff=0)
+menu_help.add_command(label="Skyline help", command=action_help)
+menu_help.add_command(label="About", command=action_about)
+
+menubar.add_cascade(label="File", menu=menu_file)
+menubar.add_cascade(label="Help", menu=menu_help)
 
 
 # global window blabla
