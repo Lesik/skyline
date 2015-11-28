@@ -18,6 +18,7 @@ house_heights = 4
 
 
 def __check_entry_input(char, entry_value):
+	''' checks the input for allowed input '''
 	if ((char in '1234') and len(entry_value) <= 1):
 		return True
 	else:
@@ -25,21 +26,24 @@ def __check_entry_input(char, entry_value):
 
 
 def generate_grid():
-	'''Generates the graphical background on the basis of grid'''
+	''' Generates the graphical background on the basis of grid '''
 	for r in range(house_heights + 2):
 		for c in range(house_heights + 2):
+			# The conditions are defined
 			top_bottom_tips = (r == 0 or r == house_heights + 1) \
 							  and (0 < c < house_heights + 1)
 			left_right_tips = (c == 0 or c == house_heights + 1) \
 							  and (0 < r < house_heights + 1)
+			# generates the hints
 			if top_bottom_tips or left_right_tips:
 				hints = game_backend.get_hints(r, c)
 				l = tk.Label(game_window, text = game_backend.get_hints(r, c))
 				labels.append(l)
 				l.grid(row=r, column=c)
+			# generates the entries
 			elif 0 < r < house_heights + 1 and 0 < c < house_heights + 1:
 				e = tk.Entry(game_window,
-							width=2,
+							width=4,
 							validate='key',
 							validatecommand=cmd_validate)
 				inputs.append(e)
@@ -47,7 +51,7 @@ def generate_grid():
 
 
 def get_user_entries():
-	'''takes the input of the user and saves it as four lists'''
+	''' takes the input of the user and saves it as four lists '''
 	user_entries = []
 	user_entries_split = []
 	for e in inputs:
@@ -66,7 +70,7 @@ def get_user_entries():
 
 
 def action_check():
-	'''compares the gnerated solution with the solution of the user'''
+	''' compares the gnerated solution with the solution of the user '''
 	if game_backend is None:
 		messagebox.showerror("Error", "You need to the game first to play.")
 	else:
@@ -82,7 +86,7 @@ def action_check():
 
 
 def action_new_game():
-	'''starts a new game'''
+	''' starts a new game '''
 	global game_backend
 	if (get_user_entries() is None or \
 			all(x is None for x in get_user_entries()) or
@@ -94,7 +98,7 @@ def action_new_game():
 
 
 def action_help():
-	'''opens a messagebox if the help-button is pressed'''
+	''' opens a messagebox if the help-button is pressed '''
 	messagebox.showinfo("Help", "Hello, \n"
 								"welcome in the beautiful world of skyline.\n"
 								"On all four sides of the field are hints "
@@ -106,14 +110,14 @@ def action_help():
 								"you think you are done you press check.\n"
 								"Have fun.")
 def action_about():
-	'''opens a messagebox if the about-button is pressed'''
+	''' opens a messagebox if the about-button is pressed '''
 	messagebox.showinfo("About", "Hier würden eigentlich unsere "
 								 "Hausnummern stehen, aber wir sind nur "
 								 "Studenten...")
 
 
 def action_quit():
-	'''stops the program if the quit-button is pressed'''
+	''' stops the program if the quit-button is pressed '''
 	game_window.quit()
 
 # init game window
@@ -124,9 +128,9 @@ cmd_validate = (game_window.register(__check_entry_input), '%S', '%P')
 menubar = tk.Menu(game_window)
 "test"
 menu_file = tk.Menu(menubar, tearoff=0)
-menu_file.add_command(label="New game", command=action_new_game,\
+menu_file.add_command(label="New game", command=action_new_game, \
 					  underline=1, accelerator="Ctrl+N")
-menu_file.add_command(label="Check", command=action_check,\
+menu_file.add_command(label="Check", command=action_check, \
 					  underline=1, accelerator="Ctrl+H")
 menu_file.add_separator()
 menu_file.add_command(label="Quit", command=action_quit)
@@ -141,5 +145,5 @@ menubar.add_cascade(label="Help", menu=menu_help)
 
 # global window starts and it's width and height is set
 game_window.config(menu=menubar)
-game_window.minsize(width=200, height=200)
+game_window.minsize(width=140, height=130)
 game_window.mainloop()
