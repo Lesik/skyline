@@ -84,7 +84,8 @@ def action_check():
 def action_new_game():
 	'''starts a new game'''
 	global game_backend
-	if (all(x == None for x in get_user_entries()) or
+	if (get_user_entries() is None or \
+			all(x is None for x in get_user_entries()) or
 			messagebox.askyesno("Start new game?",
 			"Are you sure you want to start a new game?")):
 		game_backend = backend.Backend()
