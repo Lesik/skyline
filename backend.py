@@ -1,6 +1,6 @@
 #!/usr/env python3
 
-"""Backend for the game Skyline.
+""" Backend for the game Skyline.
 Can do the following:
 - generate field
 - compare a second field with the generated one
