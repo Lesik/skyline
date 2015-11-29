@@ -1,19 +1,20 @@
 #!/usr/bin/python3
 
-''' The GUI code of the game skyline by P. Berger and O. Pidgornyy
+""" The GUI code of the game Skyline by P. Berger and O. Pidgornyy
 
 this is one of two parts of the whole program skyline.
 This part is the frontend and generates the gui and uses the backend
 to let the user play the game.
 
-'''
+"""
 
 import backend
 import tkinter as tk
 from tkinter import messagebox
 
 __author__ = "6040608: Phillip Berger, 6082200: Oles Pidgornyy"
-__email__ = "berger.phillip@hotmail.com, pidgornyy@informatik.uni-frankfurt.de"
+__email__ = "berger.phillip@hotmail.com," \
+			"pidgornyy@informatik.uni-frankfurt.de"
 
 # global variables are defined
 game_window = None
@@ -27,7 +28,7 @@ house_heights = 4
 
 
 def __check_entry_input(char, entry_value):
-	''' checks the input for allowed input '''
+	"""Checks the input for allowed input."""
 	if ((char in '1234') and len(entry_value) <= 1):
 		return True
 	else:
@@ -35,7 +36,7 @@ def __check_entry_input(char, entry_value):
 
 
 def generate_grid():
-	''' Generates the graphical background on the basis of grid '''
+	""" Generates the graphical background on the basis of grid """
 	for r in range(house_heights + 2):
 		for c in range(house_heights + 2):
 			# The conditions are defined
@@ -60,7 +61,7 @@ def generate_grid():
 
 
 def get_user_entries():
-	''' takes the input of the user and saves it as four lists '''
+	""" takes the input of the user and saves it as four lists """
 	user_entries = []
 	user_entries_split = []
 	for e in inputs:
@@ -80,7 +81,7 @@ def get_user_entries():
 
 
 def action_check():
-	''' compares the gnerated solution with the solution of the user '''
+	""" compares the gnerated solution with the solution of the user """
 	if game_backend is None:
 		messagebox.showerror("Error", "You need to the game first to play.")
 	else:
@@ -96,7 +97,7 @@ def action_check():
 
 
 def action_new_game():
-	''' starts a new game '''
+	""" starts a new game """
 	global game_backend
 	if (get_user_entries() is None or \
 			all(x is None for x in get_user_entries()) or
@@ -108,7 +109,7 @@ def action_new_game():
 
 
 def action_help():
-	''' opens a messagebox if the help-button is pressed '''
+	""" opens a messagebox if the help-button is pressed """
 	messagebox.showinfo("Help", "Hello, \n"
 								"welcome in the beautiful world of skyline.\n"
 								"On all four sides of the field are hints "
@@ -120,14 +121,14 @@ def action_help():
 								"you think you are done you press check.\n"
 								"Have fun.")
 def action_about():
-	''' opens a messagebox if the about-button is pressed '''
+	""" opens a messagebox if the about-button is pressed """
 	messagebox.showinfo("About", "Hier würden eigentlich unsere "
 								 "Hausnummern stehen, aber wir sind nur "
 								 "Studenten...")
 
 
 def action_quit():
-	''' stops the program if the quit-button is pressed '''
+	""" stops the program if the quit-button is pressed """
 	game_window.quit()
 
 # init game window
