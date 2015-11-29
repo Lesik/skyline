@@ -160,6 +160,12 @@ game_window.minsize(width=140, height=130)
 game_window.mainloop()
 
 
-#########################################################################
+##############################################################################
 # test cases
-#
+# test cases are shown in the form: command, output (change)
+# start program, opens wwindow with a menu bar
+# press New game, generates new field with hints and clear panels
+# press check, opens pop-up for error "You did not fill in all fields."
+# type one number in one panel and press check, pop-up opens
+# type in every panel a 1 and check, opens pup-up "You lose"
+# type the solution and check,
