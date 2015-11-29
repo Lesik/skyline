@@ -6,6 +6,9 @@ into the final mark. Some conventions may not have been followed."""
 import backend
 
 __author__ = "6040608: Phillip Berger, 6040608: Phillip Berger"
+__email__ = "pidgornyy@informatik.uni-frankfurt.de," \
+			"berger.phillip@hotmail.com"
+
 
 game_backend = backend.Backend()
 game_backend.generate_field()
