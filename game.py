@@ -13,7 +13,7 @@ import tkinter as tk
 from tkinter import messagebox
 
 __author__ = "6040608: Phillip Berger, 6082200: Oles Pidgornyy"
-__email__ = "berger.phillip@hotmail.com, pidgorny@informatik.uni-frankfurt.de"
+__email__ = "berger.phillip@hotmail.com, pidgornyy@informatik.uni-frankfurt.de"
 
 # global variables are defined
 game_window = None
