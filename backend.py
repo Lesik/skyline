@@ -11,7 +11,7 @@ Can do the following:
 import random
 
 __author__ = "6082200: Oles Pidgornyy, 6040608: Phillip Berger"
-__email__ = "berger.phillip@hotmail.com, pidgorny@informatik.uni-frankfurt.de"
+__email__ = "berger.phillip@hotmail.com, pidgornyy@informatik.uni-frankfurt.de"
 
 
 class Backend:
