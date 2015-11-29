@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
-""" The GUI code of the game Skyline by P. Berger and O. Pidgornyy
+""" The GUI code of the game Skyline by P. Berger
 
-this is one of two parts of the whole program skyline.
+This is one of two parts of the whole program skyline.
 This part is the frontend and generates the gui and uses the backend
 to let the user play the game.
 
@@ -81,7 +81,7 @@ def get_user_entries():
 
 
 def action_check():
-	"""Compares the gnerated solution with the solution of the user."""
+	"""Compares the generated solution with the solution of the user."""
 	if game_backend is None:
 		messagebox.showerror("Error", "You need to the game first to play.")
 	else:
@@ -110,7 +110,7 @@ def action_new_game():
 
 def action_help():
 	"""Opens a messagebox if the help-button is pressed."""
-	messagebox.showinfo("Help", "Hello, \n"
+	messagebox.showinfo("Help", "Hello,\n"
 								"welcome in the beautiful world of skyline.\n"
 								"On all four sides of the field are hints "
 								"for you. They tell you how many houses "
