@@ -133,5 +133,5 @@ class Backend:
 						if (field[previous_row][col] == field[row][col]):
 							cont = False
 			#print(field[row])
+		#print(self.field)
 		self.field = field
-		print(self.field)

@@ -37,6 +37,10 @@ def __check_entry_input(char, entry_value):
 
 def generate_grid():
 	"""Generates the graphical background on the basis of grid."""
+	global labels
+	global inputs
+	labels = []
+	inputs = []
 	for r in range(house_heights + 2):
 		for c in range(house_heights + 2):
 			# The conditions are defined
@@ -66,11 +70,10 @@ def get_user_entries():
 	user_entries_split = []
 	for e in inputs:
 		# checks if all fields are filled
+		i = 0
 		try:
 			i = int(e.get())
 		except:
-			i = None
-		if (i is None):
 			return None
 		user_entries.append(i)
 	b = int(len(user_entries) ** 0.5)
