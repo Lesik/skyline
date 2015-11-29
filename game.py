@@ -157,3 +157,8 @@ menubar.add_cascade(label="Help", menu=menu_help)
 game_window.config(menu=menubar)
 game_window.minsize(width=140, height=130)
 game_window.mainloop()
+
+
+#########################################################################
+# test cases
+#
