@@ -79,7 +79,6 @@ def get_user_entries():
 	return user_entries_split
 
 
-
 def action_check():
 	"""Compares the gnerated solution with the solution of the user."""
 	if game_backend is None:
@@ -93,7 +92,6 @@ def action_check():
 		else:
 			messagebox.showinfo("You lose", "Sorry, but you lose you can "
 											"try again.")
-
 
 
 def action_new_game():
