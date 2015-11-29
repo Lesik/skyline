@@ -131,6 +131,7 @@ def action_quit():
 
 # init game window
 game_window = tk.Tk()
+game_window.wm_title("Skyline")
 cmd_validate = (game_window.register(__check_entry_input), '%S', '%P')
 
 # menubar
