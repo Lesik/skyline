@@ -36,7 +36,7 @@ def __check_entry_input(char, entry_value):
 
 
 def generate_grid():
-	""" Generates the graphical background on the basis of grid """
+	"""Generates the graphical background on the basis of grid."""
 	for r in range(house_heights + 2):
 		for c in range(house_heights + 2):
 			# The conditions are defined
@@ -61,7 +61,7 @@ def generate_grid():
 
 
 def get_user_entries():
-	""" takes the input of the user and saves it as four lists """
+	"""Takes the input of the user and saves it as four list."""
 	user_entries = []
 	user_entries_split = []
 	for e in inputs:
@@ -81,7 +81,7 @@ def get_user_entries():
 
 
 def action_check():
-	""" compares the gnerated solution with the solution of the user """
+	"""Compares the gnerated solution with the solution of the user."""
 	if game_backend is None:
 		messagebox.showerror("Error", "You need to the game first to play.")
 	else:
@@ -97,7 +97,7 @@ def action_check():
 
 
 def action_new_game():
-	""" starts a new game """
+	"""Starts a new game."""
 	global game_backend
 	if (get_user_entries() is None or \
 			all(x is None for x in get_user_entries()) or
@@ -109,7 +109,7 @@ def action_new_game():
 
 
 def action_help():
-	""" opens a messagebox if the help-button is pressed """
+	"""Opens a messagebox if the help-button is pressed."""
 	messagebox.showinfo("Help", "Hello, \n"
 								"welcome in the beautiful world of skyline.\n"
 								"On all four sides of the field are hints "
@@ -121,14 +121,14 @@ def action_help():
 								"you think you are done you press check.\n"
 								"Have fun.")
 def action_about():
-	""" opens a messagebox if the about-button is pressed """
+	"""Opens a messagebox if the about-button is pressed."""
 	messagebox.showinfo("About", "Hier würden eigentlich unsere "
 								 "Hausnummern stehen, aber wir sind nur "
 								 "Studenten...")
 
 
 def action_quit():
-	""" stops the program if the quit-button is pressed """
+	"""Stops the program if the quit-button is pressed."""
 	game_window.quit()
 
 # init game window
@@ -137,7 +137,6 @@ cmd_validate = (game_window.register(__check_entry_input), '%S', '%P')
 
 # menubar
 menubar = tk.Menu(game_window)
-"test"
 menu_file = tk.Menu(menubar, tearoff=0)
 menu_file.add_command(label="New game", command=action_new_game, \
 					  underline=1, accelerator="Ctrl+N")
