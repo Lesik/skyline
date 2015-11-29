@@ -1,6 +1,6 @@
 #!/usr/env python3
 
-""" Backend for the game Skyline.
+"""Backend for the game Skyline.
 Can do the following:
 - generate field
 - compare a second field with the generated one
@@ -20,24 +20,24 @@ class Backend:
 	field_dimens = 4
 
 	def get_field_dimens(self):
-		""" Gets field dimensions.
+		"""Gets field dimensions.
 		:return: field dimensions
 		"""
 		return self.field_dimens
 
 	def set_field_dimens(self, field_dimens):
-		""" Sets field dimensions.
+		"""Sets field dimensions.
 		:param field_dimens: field dimensions
 		"""
 		self.field_dimens = field_dimens
 
 	def start_game(self):
-		""" Synonym function to generate field.
+		"""Synonym function to generate field.
 		"""
 		self.generate_field()
 
 	def compare_fields(self, field):
-		""" Compares two fields.
+		"""Compares two fields.
 		:param field: second field to compare with generated one
 		:return: returns True if everything correct
 		"""
@@ -49,7 +49,7 @@ class Backend:
 		return all_correct
 
 	def count_hints(self, items):
-		""" Counts hints for one row or column.
+		"""Counts hints for one row or column.
 		:param items: list with items of row/column
 		:return: amounts of hints
 		"""
@@ -61,14 +61,14 @@ class Backend:
 		return hints
 
 	def get_row(self, row):
-		""" Returns all values from requested row as list
+		"""Returns all values from requested row as list
 		:param row: number of row from which to collect values
 		:return: values of row
 		"""
 		return self.field[row]
 
 	def get_col(self, col):
-		""" Returns all values from requested column as list
+		"""Returns all values from requested column as list
 		:param col: number of column from which to collect values
 		:return: values of column
 		"""
@@ -78,7 +78,7 @@ class Backend:
 		return coll
 
 	def get_hints(self, row, col):
-		""" Helper function for GUI to get hints by coordinates
+		"""Helper function for GUI to get hints by coordinates
 		:return: list of hints for coordinates
 		"""
 		if (row == 0):
@@ -91,13 +91,13 @@ class Backend:
 			return self.count_hints(reversed(self.get_row(row - 1)))
 
 	def get_field(self):
-		""" Returns field (only for debugging purposes!)
+		"""Returns field (only for debugging purposes!)
 		:return: field
 		"""
 		return self.field
 
 	def riilain(self, list, index, item):
-		""" Replace item in list, append if needed (RIILAIN).
+		"""Replace item in list, append if needed (RIILAIN).
 		:param list: the list in question
 		:param index: index of where item should ideally go
 		:param item: item that should be inserted
@@ -109,7 +109,7 @@ class Backend:
 			list.append(item)
 
 	def generate_field(self):
-		""" Generate a game field, no duplicates allowed.
+		"""Generate a game field, no duplicates allowed.
 		:return: game field as list
 		"""
 		field = []
