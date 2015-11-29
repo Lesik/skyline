@@ -23,7 +23,7 @@ game_backend = None
 # global lists are defined
 labels = []
 inputs = []
-# the number of different houses are defined
+# possible heights for the skyscrapers
 house_heights = 4
 
 
