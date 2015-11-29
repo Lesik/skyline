@@ -109,7 +109,7 @@ class Backend:
 			list.append(item)
 
 	def generate_field(self):
-		"""5Generate a game field, no duplicates allowed.
+		"""Generate a game field, no duplicates allowed.
 		:return: game field as list
 		"""
 		field = []
