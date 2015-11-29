@@ -68,22 +68,17 @@ def get_user_entries():
 	"""Takes the input of the user and saves it as four list."""
 	user_entries = []
 	user_entries_split = []
-	print("getting user entries")
 	for e in inputs:
 		# checks if all fields are filled
 		i = 0
-		print("checking i", e)
 		try:
-			print(e.get())
 			i = int(e.get())
 		except:
-			print("EXCEPTION!")
 			return None
 		user_entries.append(i)
 	b = int(len(user_entries) ** 0.5)
 	for i in range(b):
 		user_entries_split.append(user_entries[i * b:(i * b) + b])
-	print(user_entries_split)
 	return user_entries_split
 
 
