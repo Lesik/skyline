@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-""" The GUI code of the game Skyline by P. Berger
+""" The GUI code of the game Skyline
 
 This is one of two parts of the whole program skyline.
 This part is the frontend and generates the gui and uses the backend
@@ -11,10 +11,6 @@ to let the user play the game.
 import backend
 import tkinter as tk
 from tkinter import messagebox
-
-__author__ = "6040608: Phillip Berger, 6082200: Oles Pidgornyy"
-__email__ = "berger.phillip@hotmail.com," \
-			"pidgornyy@informatik.uni-frankfurt.de"
 
 # global variables are defined
 game_window = None
